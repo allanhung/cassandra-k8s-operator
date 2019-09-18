@@ -154,25 +154,6 @@ helm init --service-account tiller --upgrade
 ```
 
 
-Add the Helm incubator repo if you do not already have it:
-
-```
-helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
-```
-
-Get the latest information about charts from the chart repositories.
-
-```
-helm repo update
-```
-
-
-Helm is available in the official helm/charts/incubator:
-
-```
-helm install --name casskop incubator/cassandra-operator
-```
-
 you can also add the CassKop repository from Github 
 
 ```console
@@ -260,7 +241,8 @@ has to be created:
 For example :
 
 ```
-kubectl apply -f samples/cassandracluster.yaml
+kubectl create -f samples/cassandra-configmap-allan.yaml
+kubectl create -f samples/cassandracluster-allan.yaml
 ```
 
 see pods coming into life :
@@ -272,7 +254,7 @@ kubectl get pods -w
 You can watch the status updates in real time on your CassandraCluster object :
 
 ```
-watch 'kubectl describe cassandracluster cassandra-demo | tail -20'
+watch 'kubectl describe cassandracluster cassandra | tail -20'
 ```
 
 ## Cassandra cluster status
